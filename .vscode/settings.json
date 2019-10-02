@@ -1,0 +1,7 @@
+{
+  "python.pythonPath": "v-env/bin/python",
+  "python.linting.pylintEnabled": false,
+  "python.linting.pep8Enabled": true,
+  "python.linting.enabled": false,
+  "python.formatting.provider": "autopep8"
+}
