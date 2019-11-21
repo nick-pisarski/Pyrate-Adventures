@@ -14,7 +14,7 @@
       "name": "Python: Main File",
       "type": "python",
       "request": "launch",
-      "program": "main.py",
+      "program": "${workspaceFolder}/main.py",
       "console": "integratedTerminal"
     }
   ]
