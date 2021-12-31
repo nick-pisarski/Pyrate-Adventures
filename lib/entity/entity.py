@@ -4,9 +4,12 @@ from typing import Protocol
 from pygame.surface import Surface
 from pygame.rect import Rect
 
+from lib.entity.entity_config import EntityConfig
+
 class Entity(Protocol):
     """Representing an entity on the screen"""
 
+    config: EntityConfig
     screen: Surface
     image: Surface
     image_rect: Rect

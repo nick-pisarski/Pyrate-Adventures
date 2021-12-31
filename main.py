@@ -1,11 +1,12 @@
 #!v-env/bin/python
 import logging
 import os
+from random import randint
 import sys
 
 import pygame
 
-from lib.entity import Floater, Player
+from lib.entity import EntityConfig, Floater, Player
 from lib.settings import GameSettings
 
 logging.basicConfig(
@@ -14,6 +15,14 @@ logging.basicConfig(
     datefmt="%m.%d.%y@%H:%M:%S",
 )
 log = logging.getLogger(os.path.basename(__file__))
+
+FLOATER_PATH = "images/Crate64.png"
+PLAYER_PATH = "images/player/PirateShip64.png"
+
+
+def end_game():
+    pygame.quit()
+    sys.exit()
 
 
 def main():
@@ -26,18 +35,21 @@ def main():
     screen = pygame.display.set_mode(settings.screen_size)
     pygame.display.set_caption("Py-rate Adventures")
 
-    player = Player(screen)
-    floater = Floater(screen)
+    player = Player(EntityConfig(PLAYER_PATH, 5, 25), screen)
+    floater = Floater(EntityConfig(FLOATER_PATH, 5, 15), screen)
 
     while True:
         # Events
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
+                end_game()
 
         # Updates
         keystate = pygame.key.get_pressed()
+        
+        if keystate[pygame.K_q]:
+            end_game()
+
         direction = keystate[pygame.K_s] - keystate[pygame.K_w]
         player.move(direction)
         floater.move()
@@ -48,7 +60,8 @@ def main():
         if floater is not None:
             floater.blitme()
         else:
-            floater = Floater(screen)
+            speed = randint(5, 50)
+            floater = Floater(EntityConfig(FLOATER_PATH, 5, speed), screen)
 
         pygame.display.flip()
         clock.tick(settings.frame_rate)
