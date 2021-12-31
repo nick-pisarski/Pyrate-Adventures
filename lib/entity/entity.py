@@ -1,10 +1,11 @@
 from abc import abstractmethod
 from typing import Protocol
 
-from pygame.surface import Surface
 from pygame.rect import Rect
+from pygame.surface import Surface
 
 from lib.entity.entity_config import EntityConfig
+
 
 class Entity(Protocol):
     """Representing an entity on the screen"""

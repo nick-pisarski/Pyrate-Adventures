@@ -10,6 +10,7 @@ class EntityConfig:
     speed: int -> number of pixels moved per frame
     padder: int -> number of pixels around entity
     """
+
     image_url: str
     speed: int
     padding: int

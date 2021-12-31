@@ -1,8 +1,8 @@
 #!v-env/bin/python
 import logging
 import os
-from random import randint
 import sys
+from random import randint
 
 import pygame
 
@@ -46,7 +46,7 @@ def main():
 
         # Updates
         keystate = pygame.key.get_pressed()
-        
+
         if keystate[pygame.K_q]:
             end_game()
 

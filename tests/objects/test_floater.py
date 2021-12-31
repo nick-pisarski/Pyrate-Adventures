@@ -1,7 +1,7 @@
 from lib.entity import Floater
 
-class TestFloater:
 
+class TestFloater:
     def test_instantiation(self):
         pass
 
