@@ -1,14 +1,14 @@
-import pygame
-
-import os
 import logging
+import os
+
+import pygame
 
 log = logging.getLogger(os.path.basename(__file__))
 
 
-class Entity():
-    """Representing an entity on the screen
-    """
+class Entity:
+    """Representing an entity on the screen"""
+
     rect = None
 
     def __init__(self, screen):
@@ -21,7 +21,12 @@ class Entity():
         Returns:
             boolean
         """
-        return self.rect.right <= 0 or self.rect.bottom <= 0 or self.rect.top >= self.screen_rect.bottom or self.rect.left >= self.screen_rect.right
+        return (
+            self.rect.right <= 0
+            or self.rect.bottom <= 0
+            or self.rect.top >= self.screen_rect.bottom
+            or self.rect.left >= self.screen_rect.right
+        )
 
     def move(self, direction):
         raise NotImplementedError

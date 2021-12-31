@@ -1,12 +1,12 @@
 #!v-env/bin/python
 import logging
-import sys
 import os
+import sys
 
 import pygame
 
-from lib.objects import Player, Floater
-from lib.utilities.settings import GameSettings
+from lib.objects import Floater, Player
+from lib.settings import GameSettings
 
 logging.basicConfig(
     level=logging.INFO,
@@ -24,7 +24,7 @@ def main():
     # Setting up screen
     settings = GameSettings(1280, 960)
     screen = pygame.display.set_mode(settings.screen_size)
-    pygame.display.set_caption('Py-rate Adventures')
+    pygame.display.set_caption("Py-rate Adventures")
 
     player = Player(screen)
     floater = Floater(screen)
@@ -38,7 +38,7 @@ def main():
 
         # Updates
         keystate = pygame.key.get_pressed()
-        direction = keystate[pygame.K_DOWN] - keystate[pygame.K_UP]
+        direction = keystate[pygame.K_s] - keystate[pygame.K_w]
         player.move(direction)
         floater.move()
 
@@ -58,4 +58,4 @@ if __name__ == "__main__":
     try:
         main()
     except SystemExit as ex:
-        log.info('System Exit')
+        log.info("System Exit")

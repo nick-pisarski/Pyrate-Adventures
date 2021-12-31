@@ -11,7 +11,7 @@ log = logging.getLogger(os.path.basename(__file__))
 
 class Floater(Entity):
 
-    img_url = 'images/Crate64.png'
+    img_url = "images/Crate64.png"
     speed = 5
     buffer = 15
 
