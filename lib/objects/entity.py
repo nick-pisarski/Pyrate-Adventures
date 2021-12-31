@@ -1,35 +1,33 @@
-import logging
-import os
+from abc import abstractmethod
+from typing import Protocol
 
-import pygame
+from pygame.surface import Surface
+from pygame.rect import Rect
 
-log = logging.getLogger(os.path.basename(__file__))
-
-
-class Entity:
+class Entity(Protocol):
     """Representing an entity on the screen"""
 
-    rect = None
-
-    def __init__(self, screen):
-        self.screen = screen
-        self.screen_rect = screen.get_rect()
+    screen: Surface
+    image: Surface
+    image_rect: Rect
 
     def is_offscreen(self):
-        """True or False if self.Rect is completely off the screen
+        """True or False if entity is completely off the screen
 
         Returns:
             boolean
         """
+        screen_rect = self.screen.get_rect()
         return (
-            self.rect.right <= 0
-            or self.rect.bottom <= 0
-            or self.rect.top >= self.screen_rect.bottom
-            or self.rect.left >= self.screen_rect.right
+            self.image_rect.right <= 0
+            or self.image_rect.bottom <= 0
+            or self.image_rect.top >= screen_rect.bottom
+            or self.image_rect.left >= screen_rect.right
         )
 
-    def move(self, direction):
+    @abstractmethod
+    def move(self, direction: int) -> None:
         raise NotImplementedError
 
-    def blitme(self):
-        raise NotImplementedError
+    def blitme(self) -> None:
+        self.screen.blit(self.image, self.image_rect)
