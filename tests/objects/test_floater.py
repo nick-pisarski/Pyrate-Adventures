@@ -1,4 +1,4 @@
-from lib.objects import Floater
+from lib.entity import Floater
 
 class TestFloater:
 

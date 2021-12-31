@@ -1,4 +1,4 @@
-from lib.objects import Player
+from lib.entity import Player
 
 
 class TestPlayer:

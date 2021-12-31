@@ -5,7 +5,7 @@ import sys
 
 import pygame
 
-from lib.objects import Floater, Player
+from lib.entity import Floater, Player
 from lib.settings import GameSettings
 
 logging.basicConfig(
